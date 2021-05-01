@@ -32,3 +32,14 @@ function listening(){
 app.get('/hello', function (req, res) {
     res.send('hello world');
 })
+
+app.get('/all', function (req, res){
+    console.log('Getting data..');
+    res.send(projectData);
+  });
+
+//Post route
+app.post('/create', function(req, res){
+    console.log('Adding new entry: ' + req.body);
+    projectData["newEntry"] = req.body;
+});

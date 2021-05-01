@@ -5,16 +5,34 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(100px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
+    grid-auto-rows: minmax(40px, auto);
+    max-width: 60%;
+    grid-template-columns: repeat(1, 1fr);
     background: #fff;
     color: #000;
     justify-content: center;
-    grid-gap: 0.5em;
+    grid-gap: 1em;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 4px 5px #444;
+    margin: auto;
+    padding: 10px;
 }
+
+/* Screen larger than 600px? 2 column */
+@media (min-width: 600px) {
+    #app {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  /* Screen larger than 900px? 3 columns */
+  @media (min-width: 900px) {
+    #app {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
 
 .holder{
     font-size: 0.8em;
@@ -25,26 +43,29 @@ body{
 }
 
 #entryHolder{
-
+    background: rgba(59, 74, 107, .4);
 }
 
 #date{
-
+    color: #fff;
 }
 
 #temp{
-
+    color: #fff;
 }
 
 #content{
-
+    color: #fff;
 }
 
 .headline {
+    text-align: center;
     font-size: 2em;
 }
 .title{
-
+    text-align: center;
+    color: #3b4a6b;
+    font-size: 26px;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
