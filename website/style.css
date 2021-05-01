@@ -5,19 +5,19 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
+    grid-auto-rows: minmax(100px, auto);
     /* grid-template-columns:  */
     height:100vh;
     background: #fff;
     color: #000;
     justify-content: center;
-    grid-gap: 1em;
+    grid-gap: 0.5em;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
 
 .holder{
-
+    font-size: 0.8em;
 }
 
 .entry{
@@ -41,7 +41,7 @@ body{
 }
 
 .headline {
-    font-size: 1.6em;
+    font-size: 2em;
 }
 .title{
 
@@ -56,19 +56,20 @@ label{
 input{
     display:block;
     height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
+    width: 400px;
+    background:#f9f9f9;
+    color: #000;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
-    border: none;
+    border-style: solid;
+    border-width: 1px;
 }
 
 button{
     width: 400px;
-    height: 100px;
+    height: 60px;
     background: #3b4a6b;
-    color: #f0d43a;
+    color: #fff;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
@@ -79,8 +80,9 @@ h1{
 }
 
 textarea{
-    background:#22b2da;
-    color: #f0d43a;
+    background:#f9f9f9;
+    color: #000;
+    width: 400px;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
 }
@@ -93,19 +95,19 @@ button:focus {
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    color: #000; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    color: #000; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    color: #000; 
     font-family: 'Oswald', sans-serif;
 
 } 
