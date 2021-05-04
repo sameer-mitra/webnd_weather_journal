@@ -31,6 +31,16 @@ html {
     margin: auto;
     padding: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    #app {
+        display: grid;
+        grid-auto-rows: minmax(40px, auto);
+        max-width: 90%;
+        margin: auto;
+        margin-top: auto;
+    }
+}
   
 
 .holder{
