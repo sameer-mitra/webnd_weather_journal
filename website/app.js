@@ -6,15 +6,60 @@ let apiKey = '&appid=02d9b7117d21441439c2fe54a03e4738&units=metric';
 let d = new Date();
 let newDate = d.getDate()+'/' + (d.getMonth()+1) + '/'+ d.getFullYear();
 
+let bZipOption = true;
+
 // Add Click Event Listener.
 document.getElementById('generate').addEventListener('click', performAction);
+document.getElementById('typeBtn1').addEventListener('click', selectZipOption);
+document.getElementById('typeBtn2').addEventListener('click', selectCityOption);
+
+function selectZipOption(e){
+    console.log('Zip option selected!');
+    resetOptions();
+    bZipOption=true;
+
+    document.getElementById('typeBtn1').classList.add('active-btn');
+
+    const zip = document.getElementById('zip');
+    zip.placeholder = 'Enter zip code here (For example, 94040)';
+    const zipLabel = document.getElementById('zipLabel');
+    zipLabel.innerHTML = 'Enter Zipcode here';
+
+};
+function selectCityOption(e){
+    console.log('City option selected!');
+    resetOptions();
+    bZipOption=false;
+
+    document.getElementById('typeBtn2').classList.add('active-btn');
+
+    const zip = document.getElementById('zip');
+    zip.placeholder = 'Enter City here (For example, London)';
+    const zipLabel = document.getElementById('zipLabel');
+    zipLabel.innerHTML = 'Enter City here';
+
+};
+
+function resetOptions() {    
+    document.getElementById('typeBtn1').classList.remove('active-btn');
+    document.getElementById('typeBtn2').classList.remove('active-btn');
+    const zip = document.getElementById('zip');
+    zip.value = '';
+};
 
 /* Main Function wired to Click Event */
 function performAction(e){
     console.log('button clicked!');
     resetUI();
 
-    const zip = document.getElementById('zip').value || 94040;
+    var defaultZip = '';
+    if(bZipOption){
+        defaultZip = 94040;
+    } else {
+        defaultZip = 'London';
+    }
+
+    const zip = document.getElementById('zip').value || defaultZip;
     const feelings = document.getElementById('feelings').value || 'Happy!';
     const country = 'us'; 
 
@@ -36,7 +81,11 @@ function performAction(e){
 
 /* Function to GET weather data */
 const getWeatherData = async (zip, country)=>{
-    const res = await fetch(baseURL + 'zip=' + zip + ',' + country + apiKey);    
+    let url = baseURL + 'zip=' + zip + ',' + country + apiKey;
+    if (!bZipOption){
+        url = baseURL + 'q=' + zip + apiKey;
+    }
+    const res = await fetch(url);    
     try {
 
         const data = await res.json();
@@ -84,9 +133,9 @@ const getData = async (url='') => {
 /* Function to UPDATE UI */
 const updateUI = async (allData) => {    
     try{
-        document.getElementById('temp').innerHTML = allData['newEntry'].temp + ' degrees celsius.';
-        document.getElementById('content').innerHTML = allData['newEntry'].feelings;
-        document.getElementById('date').innerHTML = allData['newEntry'].date;
+        document.getElementById('temp').innerHTML = 'Current temperature: ' + allData['newEntry'].temp + ' celsius.';
+        document.getElementById('content').innerHTML = 'I am feeling: ' + allData['newEntry'].feelings;
+        document.getElementById('date').innerHTML = 'Today is: ' + allData['newEntry'].date;
   
     }catch(error){
       console.log("error", error);

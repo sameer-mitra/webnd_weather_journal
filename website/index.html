@@ -11,8 +11,13 @@
             <div class ="holder headline">
                 Weather Journal App
             </div>
-            <div class ="holder zip">
-                <label for="zip">Enter Zipcode here</label>
+            <label>Search by:</label>            
+            <div class="select-container">                                
+                <button class="select-item active-btn" id="typeBtn1" type="submit">Zip</button>
+                <button class="select-item" id="typeBtn2" type="submit">City</button>
+            </div>
+            <div class ="holder zip">                
+                <label id="zipLabel" for="zip">Enter Zipcode here</label>
                 <input type="text" id="zip" placeholder="Enter zip code here (For example, 94040)">
             </div>
             <div class ="holder feel">
