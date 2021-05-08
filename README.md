@@ -1,6 +1,9 @@
 # webnd_weather_journal
 Assignment 3 of 5 Web Development Nano Degree
 
+# Live Demo:
+https://webnd-weather-journal.herokuapp.com/
+
 # Project Environment Setup
 
 ## Node and Express Environment
