@@ -66,7 +66,8 @@ function performAction(e){
     getWeatherData(zip, country)
     .then(function(newData){
         postData('/create', {
-            temp: newData.main.temp,
+            name: newData.name,
+            temp: newData.main,
             feelings: feelings,
             date: newDate
         })
@@ -133,7 +134,8 @@ const getData = async (url='') => {
 /* Function to UPDATE UI */
 const updateUI = async (allData) => {    
     try{
-        document.getElementById('temp').innerHTML = 'Current temperature: ' + allData['newEntry'].temp + ' celsius.';
+        document.getElementById('entrytitle').innerHTML = 'Most Recent Entry (' + allData['newEntry'].name + ')';
+        document.getElementById('temp').innerHTML = 'Current temperature: ' + allData['newEntry'].temp.temp + ' celsius.';
         document.getElementById('content').innerHTML = 'I am feeling: ' + allData['newEntry'].feelings;
         document.getElementById('date').innerHTML = 'Today is: ' + allData['newEntry'].date;
   
@@ -145,6 +147,7 @@ const updateUI = async (allData) => {
 /* Function to RESET UI */
 const resetUI = async (allData) => {    
     try{
+        document.getElementById('entrytitle').innerHTML = 'Most Recent Entry';
         document.getElementById('temp').innerHTML = 'Loading...';
         document.getElementById('content').innerHTML = '';
         document.getElementById('date').innerHTML = '';
