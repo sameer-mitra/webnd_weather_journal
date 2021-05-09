@@ -1,6 +1,10 @@
 /* Global Variables */
-let baseURL = 'https://api.openweathermap.org/data/2.5/weather?'; //zip=94040,us
-let apiKey = '&appid=02d9b7117d21441439c2fe54a03e4738&units=metric';
+let baseURL = 'https://api.openweathermap.org/data/2.5/weather?';
+let unitURL = '&units=metric'
+
+//Store API key in const
+const apiKey = '&appid=02d9b7117d21441439c2fe54a03e4738';
+
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -82,9 +86,9 @@ function performAction(e){
 
 /* Function to GET weather data */
 const getWeatherData = async (zip, country)=>{
-    let url = baseURL + 'zip=' + zip + ',' + country + apiKey;
+    let url = baseURL + 'zip=' + zip + ',' + country + unitURL + apiKey;
     if (!bZipOption){
-        url = baseURL + 'q=' + zip + apiKey;
+        url = baseURL + 'q=' + zip + unitURL + apiKey;
     }
     const res = await fetch(url);    
     try {
